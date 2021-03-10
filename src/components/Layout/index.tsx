@@ -12,6 +12,9 @@ const Layout: React.FC<Props> = ({ children }) => {
       <Head>
         <link rel="preload" href="/fonts/Poppins-Regular.ttf" as="font" crossOrigin="" />
         <link rel="preload" href="/fonts/Poppins-Bold.ttf" as="font" crossOrigin="" />
+        <link rel="preload" href="/fonts/ZillaSlab-Regular.ttf" as="font" crossOrigin="" />
+        <link rel="preload" href="/fonts/ZillaSlab-Bold.ttf" as="font" crossOrigin="" />
+        <link rel="preload" href="/fonts/ZillaSlab-SemiBold.ttf" as="font" crossOrigin="" />
       </Head>
       <Header />
       <div className="content">{children}</div>
