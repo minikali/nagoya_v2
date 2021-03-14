@@ -1,5 +1,6 @@
 import Layout from '@/Layout'
 import React from 'react'
+import { Container, Row, Col } from 'react-bootstrap'
 import Carousel from 'react-bootstrap/Carousel'
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import { v4 as uuid } from 'uuid'
@@ -45,12 +46,11 @@ const Home: React.FC = () => {
   ]
   return (
     <Layout>
-      <Jumbotron className="presentation-block">
+      <Jumbotron className="intro-block">
         <Carousel controls={false} pause={false}>
           {data.map((item) => {
             return (
               <Carousel.Item key={uuid()}>
-                <div className="overlay"></div>
                 <img src={item.image} alt={item.alt} />
                 <Carousel.Caption>
                   <h3>{item.title}</h3>
@@ -61,33 +61,43 @@ const Home: React.FC = () => {
           })}
         </Carousel>
       </Jumbotron>
+      <Container className="presentation-block">
+        <Row>
+          <Col xs={12} md={6} className="presentation-img">
+            <img src="images/sushi-chef.jpg" alt="Chef sushi" />
+          </Col>
+          <Col xs={12} md={6} className="presentation-txt">
+            <h2>Bienvenue chez Nagoya</h2>
+            <p>
+              Nous vous proposons une cuisine japonaise traditionnelle et contemporaine dans un
+              cadre chaleureux. Sur place, à emporter ou en livraison, dégustez nos savoureux makis,
+              sushis, sashimis, brochettes et tempuras.
+            </p>
+            <p>
+              Soucieux de la qualité de nos produits, nous sélectionnons des poissons ultra-frais et
+              assurons un contrôle rigoureux des livraisons et des produits afin de vous satisfaire.
+            </p>
+          </Col>
+        </Row>
+      </Container>
       <style jsx global>
         {`
-          .presentation-block {
+          .intro-block {
             padding: 0;
             margin: 0;
             height: calc(100vh - 70px);
           }
-          .presentation-block .carousel,
-          .presentation-block .carousel .carousel-inner,
-          .presentation-block .carousel .carousel-inner .carousel-item {
+          .intro-block .carousel,
+          .intro-block .carousel .carousel-inner,
+          .intro-block .carousel .carousel-inner .carousel-item {
             height: 100%;
           }
-          .presentation-block .carousel .carousel-inner .carousel-item {
-            position: relative;
-          }
-          .presentation-block .carousel .carousel-inner .carousel-item .overlay {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(50, 50, 50, 0.3);
-          }
-          .presentation-block .carousel .carousel-inner .carousel-item img {
+          .intro-block .carousel .carousel-inner .carousel-item img {
             object-fit: cover;
             width: 100%;
             height: 100%;
           }
-          .presentation-block .carousel .carousel-inner .carousel-item .carousel-caption {
+          .intro-block .carousel .carousel-inner .carousel-item .carousel-caption {
             width: 100%;
             padding: 20px 15px;
             top: 50%;
@@ -97,19 +107,39 @@ const Home: React.FC = () => {
             transform: translate(-50%, -50%);
             font-family: 'ZillaSlab', serif;
           }
-          .presentation-block .carousel .carousel-inner .carousel-item .carousel-caption h3 {
+          .intro-block .carousel .carousel-inner .carousel-item .carousel-caption h3 {
             font-size: 28px;
             font-weight: 600;
           }
-          .presentation-block .carousel .carousel-inner .carousel-item .carousel-caption p {
+          .intro-block .carousel .carousel-inner .carousel-item .carousel-caption p {
             font-size: 20px;
           }
-
+          .presentation-block {
+            padding: 40px;
+          }
+          .presentation-block .presentation-img {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+          }
+          .presentation-block .presentation-txt {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            font-family: 'ZillaSlab';
+          }
+          .presentation-block .presentation-txt h2 {
+            font-size: 32px;
+          }
+          .presentation-block .presentation-txt p {
+            font-size: 18px;
+            line-height: 24px;
+          }
           @media (min-width: 768px) {
-            .presentation-block .carousel .carousel-inner .carousel-item .carousel-caption h3 {
+            .intro-block .carousel .carousel-inner .carousel-item .carousel-caption h3 {
               font-size: 32px;
             }
-            .presentation-block .carousel .carousel-inner .carousel-item .carousel-caption p {
+            .intro-block .carousel .carousel-inner .carousel-item .carousel-caption p {
               font-size: 24px;
             }
           }
